@@ -1,7 +1,9 @@
 import React, { FC, useRef } from "react";
-import store from "../../store/store";
+
+import store from "../../store/index";
 import decBud from "../../store/actions/decBud";
 import incBud from "../../store/actions/incBud";
+
 const CashActions: FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
 
