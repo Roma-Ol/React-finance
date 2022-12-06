@@ -1,12 +1,14 @@
-import rootReducer from "./store";
+import { rootReducer } from "./store";
 
 export type TransactionReducerStateType = {
     bankCash: number
+    bankUsers?: ClientProperties[]
 }
 
-type ClientProperties = {
+export type ClientProperties = {
     name: string,
-    budget: number
+    budget: number,
+    id: string,
 }
 
 export type ClientsReducerStateType = ClientProperties[];

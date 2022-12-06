@@ -1,8 +1,7 @@
-import store from "../store/store";
 import { RootState } from "../types";
-import CashData from "./Organisms/CashData";
-import CashUsers from "./Organisms/CashUsers";
-import CashActions from "./Organisms/CashActions";
+import CashData from "./organisms/CashData";
+import CashUsers from "./organisms/CashUsers";
+import CashActions from "./organisms/CashActions";
 
 import { useSelector } from "react-redux";
 
@@ -11,9 +10,11 @@ function ReactBank() {
         (state: RootState) => state.transactionReducer,
     );
 
+    const bankUsers = useSelector((state: RootState) => state.clientsReducer)
+
     return(
         <div>
-            <CashData bankCash={ bankCash }/>
+            <CashData bankCash={ bankCash }  bankUsers={ bankUsers }/>
             <CashActions/>
             <CashUsers/>
         </div>
