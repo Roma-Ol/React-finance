@@ -1,7 +1,7 @@
 import { rootReducer } from "./store";
 
 export type TransactionReducerStateType = {
-    bankCash: number
+    bankCash?: number
     bankUsers?: ClientProperties[]
 }
 
@@ -9,6 +9,10 @@ export type ClientProperties = {
     name: string,
     budget: number,
     id: string,
+}
+
+export type CashOperationPros = {
+    showOptions: boolean,
 }
 
 export type ClientsReducerStateType = ClientProperties[];

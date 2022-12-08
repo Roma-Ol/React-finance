@@ -1,24 +1,24 @@
-import { RootState } from "../types";
-import CashData from "./organisms/CashData";
-import CashUsers from "./organisms/CashUsers";
-import CashActions from "./organisms/CashActions";
+import { RootState } from '../types';
+import CashData from './Organisms/CashData';
+import BankUsers from './Organisms/BankUsers';
+import UserOperations from './Organisms/UserOperations';
+import { ReactBankStyles } from './styles/reactBankStyles.linaria';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 function ReactBank() {
-    const { bankCash } = useSelector(
-        (state: RootState) => state.transactionReducer,
-    );
+	const { bankCash } = useSelector((state: RootState) => state.transactionReducer);
+	const bankUsers = useSelector((state: RootState) => state.clientsReducer);
 
-    const bankUsers = useSelector((state: RootState) => state.clientsReducer)
+	return (
+		<div className={ ReactBankStyles }>
+			<CashData bankCash={bankCash} />
 
-    return(
-        <div>
-            <CashData bankCash={ bankCash }  bankUsers={ bankUsers }/>
-            <CashActions/>
-            <CashUsers/>
-        </div>
-    )
+			{ bankUsers.length > 0 && <BankUsers bankUsers={bankUsers} /> }
+
+			<UserOperations />
+		</div>
+	);
 }
 
 export default ReactBank;

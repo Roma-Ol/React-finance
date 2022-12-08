@@ -2,10 +2,12 @@ import React from "react";
 
 export function useInputValidation() {
     function validate(value: any, type: string ) {
-        const stringRegex = new RegExp('^[A-Z][a-z]*');
+        // Cyrillic & Latin.
+        const stringRegex = new RegExp(/^[a-zA-Z ]+$/);
 
         switch (type) {
             case 'string':
+                console.log(stringRegex.test(value));
                 return stringRegex.test(value);
 
             default:
