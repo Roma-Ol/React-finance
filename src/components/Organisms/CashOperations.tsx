@@ -1,11 +1,14 @@
 import React, { FC, useRef } from 'react';
 
-import store from '../store/index';
-import decBud from '../store/actions/decBud';
-import incBud from '../store/actions/incBud';
-import { CashActionsStyles } from './CashActionsStyles.linaria';
+import store from '../../store/index';
+import decBud from '../../store/actions/decBud';
+import incBud from '../../store/actions/incBud';
+import { CashOperationsStyles } from '../styles/cashOperationsStyles.linaria';
+import { CashOperationPros } from '../../types';
 
-const CashActions: FC = () => {
+const CashOperations: FC<CashOperationPros> = ({
+																								 showOptions,
+																							 }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	function operateCash(operator: string) {
@@ -26,13 +29,11 @@ const CashActions: FC = () => {
 	}
 
 	return (
-		<div className={ CashActionsStyles }>
-			<div className='cash__actions__header'>
-				Budget operations:
-			</div>
+		<div className={CashOperationsStyles}
+				 style={{ maxHeight: showOptions ? '999px' : '0' }}>
 
 			<div className='cash__actions__input'>
-				<input type='number' ref={inputRef} placeholder='0'/>
+				<input type='number' ref={inputRef} placeholder='0' />
 			</div>
 
 			<div className='cash__actions__buttons'>
@@ -49,4 +50,4 @@ const CashActions: FC = () => {
 	);
 };
 
-export default CashActions;
+export default CashOperations;

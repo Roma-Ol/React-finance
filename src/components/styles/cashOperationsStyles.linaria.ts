@@ -1,32 +1,20 @@
 import { css } from '@linaria/core';
 
-export const CashActionsStyles = css`
+export const CashOperationsStyles = css`
   font-size: 20px;
   color: #ffffff;
-  width: 50%;
 	height: max-content;
-  padding: 30px;
-  margin-top: 50px;
   display: flex;
+	overflow: hidden;
   flex-wrap: wrap;
-  box-sizing: border-box;
-  border-radius: 50px;
-  background: #6874E8;
-  box-shadow: -15px 15px 35px #4e57ae,
-    15px -15px 35px #8291ff;
+	transition: max-height .3s ease-in-out 0s;
 
   .cash__actions {
-    &__header {
-      width: 100%;
-      margin-bottom: 20px;
-			border-bottom: 1px solid;
-			padding-bottom: 20px;
-    }
-
     &__input {
       width: 50%;
       overflow: scroll;
       border-radius: 15px;
+			margin: 20px 0 35px;
 
       input {
         border: none;
@@ -39,17 +27,11 @@ export const CashActionsStyles = css`
         transition: .3s;
         border-radius: 20px;
         background: #ffffff;
-
-        &:hover,
-        &:focus,
-        &:focus-visible {
-          border: none;
-          border-radius: 20px;
-        }
       }
     }
 
     &__buttons {
+      margin: 20px 0 35px;
       display: flex;
       flex-direction: column;
       row-gap: 5px;
@@ -71,11 +53,6 @@ export const CashActionsStyles = css`
 
         &[name='dec'] {
           background: #e30c5e;
-        }
-
-        &:hover,
-        &:active {
-          background: #000000;
         }
       }
     }
