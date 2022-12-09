@@ -25,7 +25,14 @@ export const ReactBankStyles = css`
     width: 50%;
     padding: 10px;
     cursor: pointer;
-		transition: .3s;
+		transition: .4s;
+		background: no-repeat center;
+		background-size: cover;
+    rotate: 0;
+
+    &.open {
+      rotate: 180deg;
+    }
 
     &:hover,
     &:active {

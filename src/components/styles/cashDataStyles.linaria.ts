@@ -24,14 +24,13 @@ export const CashDataStyles = css`
     align-items: baseline;
     justify-content: center;
     column-gap: 15px;
-		
-		&__options {
+
+    &__options {
       max-width: 40px;
       height: 40px;
 			position: absolute;
 			top: 35px;
       right: 40px;
-      background-image: url("/src/icons/transfer.png");
 		}
     span {
       font-size: 40px;
