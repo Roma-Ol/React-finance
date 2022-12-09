@@ -9,6 +9,7 @@ const BankUsers: FC<TransactionReducerStateType> = ({
 	bankUsers,
 }) => {
 	const [sorting, setSorting] = useState('off');
+	const [showFilter, setShowFilter] = useState(false);
 
 	function operateSorting(key: string) {
 		setSorting(key);
@@ -16,7 +17,7 @@ const BankUsers: FC<TransactionReducerStateType> = ({
 	}
 
 	return (
-		<div className={BankUsersStyles}>
+		<div className={ BankUsersStyles }>
 			<div className='bank__users'>
 				<div className='bank__users__header'>
 					<div>Username:</div>
@@ -35,9 +36,13 @@ const BankUsers: FC<TransactionReducerStateType> = ({
 				})}
 
 				{ bankUsers.length > 1 &&
-					<div className='bank__users__sort'>
-						<div>Sort by:</div>
-						<div className='submitgroup'>
+					<div className={ clsx('bank__users__sort', showFilter && 'open') }>
+						<button className={ clsx('bank__users__sort__trigger', showFilter && 'open') }
+										name='Sort users'
+										onClick={() => setShowFilter(!showFilter)}
+										style={{ backgroundImage: `url('501a705132fb15b5d956775969bf4abb.png')` }} />
+
+						<div className={ clsx('submitgroup', showFilter && 'open')}>
 							<button name='sort by name'
 											className={ clsx(sorting ==='name' && 'active') }
 											onClick={() => operateSorting('name')} >
@@ -49,6 +54,7 @@ const BankUsers: FC<TransactionReducerStateType> = ({
 								Cash
 							</button>
 						</div>
+
 					</div>
 				}
 			</div>
