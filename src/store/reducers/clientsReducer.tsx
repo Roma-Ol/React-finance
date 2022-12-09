@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const createUser = (name: string, budget: number) => { return { name: name, budget: budget, id: uuidv4() }};
 
-function sortUsers(state: ClientProperties[], sortBy: string) {
+function sortUsers(sortArr: ClientProperties[], sortBy: string) {
     // @ts-ignore
-    return state.sort((a: ClientProperties, b: ClientProperties) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0))
+    return sortArr.sort((a: ClientProperties, b: ClientProperties) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0));
 }
 
 export function clientsReducer(state: ClientsReducerStateType = [], action: any) {
@@ -16,9 +16,9 @@ export function clientsReducer(state: ClientsReducerStateType = [], action: any)
         case 'REMOVE':
             return [...state.slice(0, action.payload.index),...state.slice(action.payload.index + 1)]
         case 'SORT_BY_NAME':
-            return [...sortUsers(state, 'name')]
+            return sortUsers([...state], 'name')
         case 'SORT_BY_BUDGET':
-            return [...sortUsers(state, 'budget')]
+            return sortUsers([...state], 'budget')
 
         default:
             return state;
